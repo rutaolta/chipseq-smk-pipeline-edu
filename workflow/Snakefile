@@ -11,6 +11,7 @@ include: "rules/align_reads.smk"
 # Steps that build reads coverage tracks for raw signal visualization
 include: "rules/coverage_track.smk"
 # TODO: MACS2 steps
+include: "rules/macs2.smk"
 
 # 'first' rule in file, which is executed by default
 rule all:
@@ -29,9 +30,14 @@ rule all:
             rules.bam_bigwig.output,
             genome=config['genome'],
             sample=SAMPLES_DF.index
-        )
+        ),
 
         # TODO: MACS2 *.narrowPeak peaks
+        expand(
+            rules.callpeak.output.narrow_peak,
+            genome=config['genome'],
+            sample=SAMPLES_DF.index
+        )
 
 rule all_results_bundle:
     input: rules.all.input
