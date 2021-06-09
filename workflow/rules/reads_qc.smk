@@ -18,5 +18,6 @@ rule reads_multiqc:
         "results/qc/multiqc/reads.html",
          directory("results/qc/multiqc/reads_data")
     log: "logs/qc/multiqc/reads.log"
+    conda: "../envs/multiqc.yaml"
     wrapper:
         "0.74.0/bio/multiqc"
