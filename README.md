@@ -1,64 +1,15 @@
-# Into
+# link to chip_seq_results.tar.gz
 
-A simple pipeline for educational purposes. The pipeline:
-* aligns Chip-Seq single-end data
-* generates reads coverage track
+https://drive.google.com/file/d/1HZaxsXpRvKhkCYk4zKtGkPFVAnvcBNUu/view?usp=sharing
 
-Peak calling step is missing on purposed and is supposed to be a simple exercise.
+# IGV
 
-# Configure Pipeline
-```shell
-git clone https://github.com/JetBrains-Research/chipseq-smk-pipeline-edu#configure-pipeline <pipeline_working_dir>
+![IGV](https://user-images.githubusercontent.com/34814028/121679252-cefab300-cac0-11eb-9b53-34a2e1351cba.png)
 
-cd <pipeline_working_dir>
-```
+# DAG
 
-Pipeline is tested with snakemake 6.3.0. It is recommended to create a fresh conda environment using `mamba` or `conda` (see https://snakemake.readthedocs.io/en/stable/getting_started/installation.html?highlight=mamba#installation-via-conda-mamba)
-:
-```shell
-mamba env create --name snakemake --file ./environment.yaml
-# or:
-# conda env create --name snakemake --file ./environment.yaml
-```
-Activate conda environment with snakemake:
-```shell
-conda activate snakemake
-```
+![image](https://user-images.githubusercontent.com/34814028/121679603-2ef15980-cac1-11eb-9104-9ea9bd240557.png)
 
+# rulegraph
 
-**Configure input data**:
-Download and unpack [example data](https://drive.google.com/file/d/1vtHVs4Yvf6ZnfynllxGYD7Lc96HuU46m/view?usp=sharing).
-Copy `reads` folder to working directory. Delete `data_table.tsv` because `config` folder already has more recent version of `data_table.csv`.
-
-# Run
-
-Plot DAG and rule graphs
-```shell
-snakemake --dag | dot -Tsvg > images/dag.svg
-snakemake --rulegraph | dot -Tsvg > images/rulegraph.svg
-```
-
-Check pipeline
-```shell
-snakemake -pr --use-conda --cores 8 --dry-run
-```
-
-Run pipeline
-```shell
-snakemake -pr --use-conda --cores 8
-
-# or:
-#snakemake -pr --use-conda --cores 8 --notemp
-```
-
-Archive pipeline results to a bundle
-```shell
-snakemake -pr --use-conda --cores 1 all_results_bundle
-```
-
-Some clusters automatically clean files older than 1 month. You could ask snakemake
-touch all files in a correct pipeline-specific order. At the moment it doesn't work
-with outputs marked as `temp(..)`:
-```shell
-snakemake --cores 8 --use-conda --touch --forceall
-```
+![image](https://user-images.githubusercontent.com/34814028/121679696-4d575500-cac1-11eb-903a-b8ae395bab5a.png)
