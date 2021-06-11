@@ -1,8 +1,8 @@
 rule callpeak:
     input:
-        rules.bam_sort.output.bam,
+        treatment=rules.bam_sort.output.bam,
     output:
-        narrow_peak="results/macs2/{sample}_{genome}_peaks.narrowPeak",
+        narrowPeak="results/macs2/{sample}_{genome}_peaks.narrowPeak",
         xls="results/macs2/{sample}_{genome}_peaks.xls"
     log:
         "logs/macs2/{sample}_{genome}_callpeak.log"
