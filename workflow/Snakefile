@@ -34,7 +34,7 @@ rule all:
 
         # TODO: MACS2 *.narrowPeak peaks
         expand(
-            rules.callpeak.output.narrow_peak,
+            rules.callpeak.output.narrowPeak,
             genome=config['genome'],
             sample=SAMPLES_DF.index
         )
